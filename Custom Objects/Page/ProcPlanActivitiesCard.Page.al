@@ -1,0 +1,178 @@
+page 52186147 "Proc. Plan Activities Card"
+{
+    Caption = 'Procurement Plan Activities Card';
+    PageType = List;
+    SourceTable = "Workplan Activities";
+
+    layout
+    {
+        area(content)
+        {
+            repeater(Control1102756000)
+            {
+                IndentationColumn = ActivitiesIndent;
+                IndentationControls = "Activity Description";
+                ShowCaption = false;
+                field("Activity Code"; Rec."Activity Code")
+                {
+                }
+                field("Activity Description"; Rec."Activity Description")
+                {
+                }
+                field(Type; Rec.Type)
+                {
+                }
+                field("Default RFP Code"; Rec."Default RFP Code")
+                {
+                }
+                field("Account Type"; Rec."Account Type")
+                {
+                }
+                field(Status; Rec.Status)
+                {
+                }
+                field("No."; Rec."No.")
+                {
+                }
+                field(Totaling; Rec.Totaling)
+                {
+                }
+                field("Global Dimension 1 Code"; Rec."Global Dimension 1 Code")
+                {
+                }
+                field("Shortcut Dimension 2 Code"; Rec."Shortcut Dimension 2 Code")
+                {
+                }
+                field("Workplan Code"; Rec."Workplan Code")
+                {
+                }
+                field("Converted to Budget"; Rec."Converted to Budget")
+                {
+                }
+                field("Strategic Plan Code"; Rec."Strategic Plan Code")
+                {
+                }
+                field("Strategic Plan Desc"; Rec."Strategic Plan Desc")
+                {
+                }
+                field("Medium term Plan Code"; Rec."Medium term Plan Code")
+                {
+                }
+                field("Medium term  Plan Desc"; Rec."Medium term  Plan Desc")
+                {
+                }
+                field("PC Code"; Rec."PC Code")
+                {
+                }
+                field("PC Name"; Rec."PC Name")
+                {
+                }
+                field(Indentation; Rec.Indentation)
+                {
+                    Editable = false;
+                    Visible = false;
+                }
+            }
+        }
+    }
+
+    actions
+    {
+        area(processing)
+        {
+            action(Convert)
+            {
+                Caption = 'Convert';
+                Promoted = true;
+                PromotedCategory = Process;
+
+                trigger OnAction()
+                begin
+                    xRec."Converted to Budget" := false;
+                    Workplan.Reset;
+                    if Workplan.Find('-') then
+                        Rec."Converted to Budget" := true;
+                    repeat
+                        Rec."Converted to Budget" := true;
+                    until Workplan.Next = 0;
+                    Rec.Modify;
+                    //END;
+                end;
+            }
+            group("F&unctions")
+            {
+                Caption = 'F&unctions';
+                action("Indent Workplan")
+                {
+                    Caption = 'Indent Workplan';
+                    //RunObject = Codeunit "Workplan Indent";
+                }
+                action("Import Workplan")
+                {
+                    Caption = 'Import Workplan';
+                }
+            }
+        }
+    }
+
+    trigger OnAfterGetRecord()
+    begin
+        ActivitiesIndent := 0;
+        WorkPlanCodeOnFormat;
+        ActivitiesOnFormat;
+        TypeOnFormat;
+        TotalingOnFormat;
+    end;
+
+    var
+        Workplan: Record Workplan;
+        [InDataSet]
+        "WorkPlan CodeEmphasize": Boolean;
+        [InDataSet]
+        ActivitiesEmphasize: Boolean;
+        [InDataSet]
+        ActivitiesIndent: Integer;
+        [InDataSet]
+        TypeEmphasize: Boolean;
+        [InDataSet]
+        TotalingEmphasize: Boolean;
+
+    //[Scope('Internal')]
+    procedure SetSelection(var GLAcc: Record Workplan)
+    begin
+    end;
+
+    //[Scope('Internal')]
+    procedure GetSelectionFilter(): Code[80]
+    var
+        GLAcc: Record Workplan;
+        FirstAcc: Text[20];
+        LastAcc: Text[20];
+        SelectionFilter: Code[80];
+        GLAccCount: Integer;
+        More: Boolean;
+    begin
+    end;
+
+    local procedure WorkPlanCodeOnFormat()
+    begin
+        "WorkPlan CodeEmphasize" := Rec."Account Type" <> Rec."Account Type"::Posting;
+    end;
+
+    local procedure ActivitiesOnFormat()
+    begin
+        ActivitiesIndent := Rec.Indentation;
+        ActivitiesEmphasize := Rec."Account Type" <> Rec."Account Type"::Posting;
+    end;
+
+    local procedure TypeOnFormat()
+    begin
+        TypeEmphasize := Rec."Account Type" <> Rec."Account Type"::Posting;
+    end;
+
+    local procedure TotalingOnFormat()
+    begin
+        TotalingEmphasize := Rec."Account Type" <> Rec."Account Type"::Posting;
+    end;
+}
+

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
+  <file datatype="xml" source-language="en-US" target-language="en-CA" original="Please update this value">
+    <body>
+      <group id="body">
+        <trans-unit id="Table 3082712941 - Field 2363328873 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document Type</source>
+          <target>Document Type</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Document Exemptions Auth. - Field Document Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3082712941 - Field 486908828 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document No.</source>
+          <target>Document No.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Document Exemptions Auth. - Field Document No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3082712941 - Field 3014885516 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sequence No.</source>
+          <target>Sequence No.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Document Exemptions Auth. - Field Sequence No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3082712941 - Field 678586878 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Approval Code</source>
+          <target>Approval Code</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Document Exemptions Auth. - Field Approval Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3082712941 - Field 4160783946 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sender ID</source>
+          <target>Sender ID</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Document Exemptions Auth. - Field Sender ID - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3082712941 - Field 3883264070 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Salespers./Purch. Code</source>
+          <target>Salespers./Purch. Code</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Document Exemptions Auth. - Field Salespers./Purch. Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3082712941 - Field 124852388 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Approver ID</source>
+          <target>Approver ID</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Document Exemptions Auth. - Field Approver ID - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3082712941 - Field 513339096 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Status</source>
+          <target>Status</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Document Exemptions Auth. - Field Status - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3082712941 - Field 696551240 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Date-Time Sent for Approval</source>
+          <target>Date-Time Sent for Approval</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Document Exemptions Auth. - Field Date-Time Sent for Approval - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3082712941 - Field 45524177 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Last Date-Time Modified</source>
+          <target>Last Date-Time Modified</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Document Exemptions Auth. - Field Last Date-Time Modified - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3082712941 - Field 326404015 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Last Modified By ID</source>
+          <target>Last Modified By ID</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Document Exemptions Auth. - Field Last Modified By ID - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3082712941 - Field 2790486453 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Comment</source>
+          <target>Comment</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Document Exemptions Auth. - Field Comment - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3082712941 - Field 4085727052 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Due Date</source>
+          <target>Due Date</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Document Exemptions Auth. - Field Due Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3082712941 - Field 224005129 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Approval Type</source>
+          <target>Approval Type</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Document Exemptions Auth. - Field Approval Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3082712941 - Field 224005129 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source> ,Sales Pers./Purchaser,Approver</source>
+          <target> ,Sales Pers./Purchaser,Approver</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Document Exemptions Auth. - Field Approval Type - Property OptionCaption</note>
+        </trans-unit>
+        <trans-unit id="Table 3082712941 - Field 3748749607 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Limit Type</source>
+          <target>Limit Type</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Document Exemptions Auth. - Field Limit Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3082712941 - Field 3748749607 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Approval Limits,Credit Limits,Request Limits,No Limits</source>
+          <target>Approval Limits,Credit Limits,Request Limits,No Limits</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Document Exemptions Auth. - Field Limit Type - Property OptionCaption</note>
+        </trans-unit>
+        <trans-unit id="Table 3082712941 - Field 3135334477 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Table ID</source>
+          <target>Table ID</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Document Exemptions Auth. - Field Table ID - Property Caption</note>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>
