@@ -187,7 +187,7 @@ page 52185714 "Member Application Single"
                 }
                 field(Status; Rec.Status)
                 {
-                    Editable = false;
+                    Editable = true;
 
                     trigger OnValidate()
                     begin
@@ -478,7 +478,7 @@ page 52185714 "Member Application Single"
                 begin
                     Rec.TestField(Status, Rec.Status::Approved);
                     if not Confirm(Text002) = true then exit;
-                    //here//RegistrationMngt.MemberRegistration(Rec);
+                        RegistrationMngt.MemberRegistration(Rec);
                 end;
             }
         }

@@ -1,7 +1,7 @@
 table 52185803 "Salutation Tittles"
 {
-    //DrillDownPageID = "Salutation Tittles";
-    //LookupPageID = "Salutation Tittles";
+    DrillDownPageID = "Salutation Tittles";
+    LookupPageID = "Salutation Tittles";
 
     fields
     {

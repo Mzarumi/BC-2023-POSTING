@@ -3438,7 +3438,7 @@ Codeunit 52186461 "Custom Approvals Codeunit"
                     SAccountAppl.Validate(Status, SAccountAppl.Status::Approved);
                     SAccountAppl.Modify;
                     Variant := SAccountAppl;
-                    RegistrationProcess.AccountRegistration(Variant);
+                    //RegistrationProcess.AccountRegistration(Variant);
                 end;//
                     //Electronic Fund Transfer Application
             Database::"EFT Transfer Header":
@@ -3482,7 +3482,7 @@ Codeunit 52186461 "Custom Approvals Codeunit"
                     DeactivateReactivateHeader.Validate(Status, DeactivateReactivateHeader.Status::Processed);
                     DeactivateReactivateHeader.Modify;
                     Variant := DeactivateReactivateHeader;
-                    RegistrationProcess.DeactivateReactive(Variant);
+                    //RegistrationProcess.DeactivateReactive(Variant);
                 end;//
                     //Product Factory Application
             Database::"Product Factory Application":
@@ -3491,7 +3491,7 @@ Codeunit 52186461 "Custom Approvals Codeunit"
                     ProductFactoryApplication.Validate(Status, ProductFactoryApplication.Status::Converted);
                     ProductFactoryApplication.Modify;
                     Variant := ProductFactoryApplication;
-                    RegistrationProcess.CreateProduct(Variant);
+                    //RegistrationProcess.CreateProduct(Variant);
                 end;//
                     //Loans
             Database::Loans:

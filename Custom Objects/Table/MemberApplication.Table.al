@@ -8,10 +8,11 @@ table 52185691 "Member Application"
             Caption = 'No.';
 
             trigger OnValidate()
+            
             begin
                 // if "No." <> xRec."No." then begin
                 //     SeriesSetup.Get;
-                //     //NoSeriesMgtTestManual(SeriesSetup."Member Application Nos.");
+                //     NoSeriesMgtTestManual(SeriesSetup."Member Application Nos.");
                 //     "No. Series" := '';
                 // end;
             end;
@@ -197,7 +198,7 @@ table 52185691 "Member Application"
             TableRelation = "Country/Region";
             //This property is currently not supported
             //TestTableRelation = false;
-            ValidateTableRelation = false;
+            ValidateTableRelation = true;
 
             trigger OnValidate()
             begin
@@ -874,11 +875,12 @@ table 52185691 "Member Application"
     trigger OnInsert()
     var
         UserSetup: Record "User Setup";
+        NoSeriesMgt: Codeunit NoSeriesManagement;
     begin
         if "No." = '' then begin
             SeriesSetup.Get;
             SeriesSetup.TestField(SeriesSetup."Member Application Nos.");
-            //NoSeriesMgtInitSeries(SeriesSetup."Member Application Nos.", xRec."No. Series", 0D, "No.", "No. Series");
+            NoSeriesMgt.InitSeries(SeriesSetup."Member Application Nos.", xRec."No. Series", 0D, "No.", "No. Series");
         end;
 
         if UserSet.Get(UserId) then begin

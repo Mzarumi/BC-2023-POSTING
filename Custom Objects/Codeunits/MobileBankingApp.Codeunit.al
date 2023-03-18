@@ -849,7 +849,7 @@ until Venderdetails.Next = 0;
         //==================Create End.
 
         //***********Create Process
-        RegistrationMngt.AccountRegistration(SavingsAccountApplication);
+        //RegistrationMngt.AccountRegistration(SavingsAccountApplication);
 
         saccoAccount.Reset;
         saccoAccount.SetRange("Member No.", MemberNo);

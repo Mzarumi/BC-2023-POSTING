@@ -1446,11 +1446,13 @@ table 52185700 Members
     end;
 
     trigger OnInsert()
+    var
+        NoSeriesMgt: Codeunit NoSeriesManagement;
     begin
         if "No." = '' then begin
             SeriesSetup.Get;
             SeriesSetup.TestField(SeriesSetup."Member Nos.");
-            //NoSeriesMgtInitSeries(SeriesSetup."Member Nos.", xRec."No. Series", 0D, "No.", "No. Series");
+            NoSeriesMgt.InitSeries(SeriesSetup."Member Nos.", xRec."No. Series", 0D, "No.", "No. Series");
         end;
 
         "Created By" := UserId;

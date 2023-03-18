@@ -1,6 +1,7 @@
 table 52185723 "Member Category"
 {
-    //LookupPageID = "Member Category";
+    LookupPageID = "Member Category";
+    DrillDownPageId = "Member Category";
 
     fields
     {

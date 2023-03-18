@@ -6471,14 +6471,14 @@ Codeunit 52185470 "Periodic Activities"
                     Accounts.Reset;
                     Accounts.SetRange("Member No.", Members."No.");
                     Accounts.SetRange("Product Category", Accounts."product category"::"Premier Club Account");
-                    if not Accounts.Find('-') then
-                        RegistrationProcess.AnySavingsAccountRegistration(Members."No.", '07');
+                    //if not Accounts.Find('-') then
+                        //RegistrationProcess.AnySavingsAccountRegistration(Members."No.", '07');
 
                     Accounts.Reset;
                     Accounts.SetRange("Member No.", Members."No.");
                     Accounts.SetRange("Product Category", Accounts."product category"::"Premier Club Reg Fee");
-                    if not Accounts.Find('-') then
-                        RegistrationProcess.AnySavingsAccountRegistration(Members."No.", '06');
+                    //if not Accounts.Find('-') then
+                        //RegistrationProcess.AnySavingsAccountRegistration(Members."No.", '06');
                 until Members.Next = 0;
             end;
 
@@ -6570,8 +6570,8 @@ Codeunit 52185470 "Periodic Activities"
                     Accounts.Reset;
                     Accounts.SetRange("Member No.", Members."No.");
                     Accounts.SetRange("Product Category", Accounts."product category"::"Premier Club Reg Fee");
-                    if not Accounts.Find('-') then
-                        RegistrationProcess.AnySavingsAccountRegistration(Members."No.", '06');
+                    //if not Accounts.Find('-') then
+                        //RegistrationProcess.AnySavingsAccountRegistration(Members."No.", '06');
                 until Members.Next = 0;
             end;
 

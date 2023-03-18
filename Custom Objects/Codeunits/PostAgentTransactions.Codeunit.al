@@ -923,7 +923,7 @@ Codeunit 52185500 "Post Agent Transactions"
                  END;*/
             //SacAccApp.VALIDATE("Group Account No",AgentTransactions.gr
 
-            RegProcess.AccountRegistration(SacAccApp);
+            //RegProcess.AccountRegistration(SacAccApp);
 
 
             /*VarVariant := SacAccApp;
