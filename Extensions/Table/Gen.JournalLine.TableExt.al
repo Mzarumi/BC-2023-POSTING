@@ -1,6 +1,7 @@
 #pragma warning disable AA0005, AA0008, AA0018, AA0021, AA0072, AA0137, AA0201, AA0206, AA0218, AA0228, AL0254, AL0424, AS0011, AW0006 // ForNAV settings
 TableExtension 52186411 tableextension52186411 extends "Gen. Journal Line" 
 {
+  
     fields
     {
         field(50000;"Transaction Type";Option)
@@ -192,5 +193,13 @@ TableExtension 52186411 tableextension52186411 extends "Gen. Journal Line"
             ELSE
             IF ("Account Type" = CONST(Employee)) Employee;
         }
+
+        modify("Account No.")
+        {
+          TableRelation = if ("Account Type" = CONST(Savings)) "Savings Accounts"
+          ELSE
+          if ("Account Type" = CONST(Credit)) "Credit Accounts";
+        }
+        
     }
 }

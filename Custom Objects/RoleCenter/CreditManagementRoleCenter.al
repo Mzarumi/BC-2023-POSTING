@@ -102,24 +102,22 @@ page 52186803 "Credit Management RoleCenter"
                     }
 
                 }
-            }
-            group("Loan Processed")
-            {
-                action("Loan Posted List")
+                group("Loan Processed")
                 {
-                    RunObject = page "Loan Posted List";
-                    ApplicationArea = all;
+                    action("Loan Posted List")
+                    {
+                        RunObject = page "Loan Posted List";
+                        ApplicationArea = all;
 
-                }
-                action("Posted Loan Disbursement List")
-                {
-                    ApplicationArea = all;
-                    RunObject = page "Posted Loan Disbursement List";
+                    }
+                    action("Posted Loan Disbursement List")
+                    {
+                        ApplicationArea = all;
+                        RunObject = page "Posted Loan Disbursement List";
+                    }
                 }
             }
-        }
-        area(Embedding)
-        {
+
             group("Periodic Activities")
             {
                 group("Monthly Billing")
@@ -144,175 +142,177 @@ page 52186803 "Credit Management RoleCenter"
                         RunObject = page "Periodic Billing  Header List";
                     }
                 }
-            }
-            group("Check Off")
-            {
-                action("Checkoff Advice Header List")
+                group("Check Off")
                 {
-                    ApplicationArea = all;
-                    RunObject = page "Checkoff Advice Header List";
-                }
-                action("Checkoff Buffer")
-                {
-                    ApplicationArea = all;
-                    RunObject = page "Checkoff Buffer";
-                }
-                action("Checkoff Header List")
-                {
-                    ApplicationArea = all;
-                    RunObject = page "Checkoff Header List";
-                }
-                action("View Checkoff Lines")
-                {
-                    ApplicationArea = all;
-                    RunObject = page "View Checkoff Lines";
-                }
-            }
-            group("Loan Activity")
-            {
-                action("Loan Rescheduling List")
-                {
-                    ApplicationArea = all;
-                    RunObject = page "Loan Rescheduling List";
-                }
-                action("Guarantor Subsitution List")
-                {
-                    ApplicationArea = all;
-                    RunObject = page "Guarantor Subsitution List";
-                }
-                action("Loan Recovery Header List")
-                {
-                    ApplicationArea = all;
-                    RunObject = page "Loan Recovery Header List";
-                }
-                action("Posted Loan Recovery Header")
-                {
-                    ApplicationArea = all;
-                    RunObject = page "Posted Loan Recovery Header";
-                }
-                action("Loan Recovery Header(Modified)")
-                {
-                    ApplicationArea = all;
-                    RunObject = page "Loan Recovery Header(Modified)";
-                }
-            }
-            group("Member Activity")
-            {
-                group("Member withdrawal")
-                {
-                    group("Member withdrawal Notice")
-                    {
-                        action("Open withdrawal Notice")
-                        {
-                            ApplicationArea = all;
-                            RunObject = page "Open withdrawal Notice";
-                        }
-                        action("Pending Withdrawal Notice")
-                        {
-                            ApplicationArea = all;
-                            RunObject = page "Pending Withdrawal Notice";
-                        }
-                        action("Approved Withdrawal Notice")
-                        {
-                            ApplicationArea = all;
-                            RunObject = page "Approved Withdrawal Notice";
-                        }
-                        action("Rejected Withdrawal Notice")
-                        {
-                            ApplicationArea = all;
-                            RunObject = page "Rejected Withdrawal Notice";
-                        }
-                    }
-                    group("Member Securities")
-                    {
-                        action("Member Change List")
-                        {
-                            ApplicationArea = all;
-                            RunObject = page "Member Change List";
-                        }
-                        action("+ Member Change List")
-                        {
-                            ApplicationArea = all;
-                            RunObject = page "+ Member Change List";
-                        }
-
-                    }
-
-                    group("History")
-                    {
-                        action("Posted Membership Closure")
-                        {
-                            ApplicationArea = all;
-                            RunObject = page "Posted Membership Closure List";
-                        }
-                    }
-                }
-            }
-            group("Loan CRB")
-            {
-                group(Tasks)
-                {
-                    action("CRB Data")
+                    action("Checkoff Advice Header List")
                     {
                         ApplicationArea = all;
-                        RunObject = page "CRB Data";
+                        RunObject = page "Checkoff Advice Header List";
+                    }
+                    action("Checkoff Buffer")
+                    {
+                        ApplicationArea = all;
+                        RunObject = page "Checkoff Buffer";
+                    }
+                    action("Checkoff Header List")
+                    {
+                        ApplicationArea = all;
+                        RunObject = page "Checkoff Header List";
+                    }
+                    action("View Checkoff Lines")
+                    {
+                        ApplicationArea = all;
+                        RunObject = page "View Checkoff Lines";
+                    }
+                }
+                group("Loan Activity")
+                {
+                    action("Loan Rescheduling List")
+                    {
+                        ApplicationArea = all;
+                        RunObject = page "Loan Rescheduling List";
+                    }
+                    action("Guarantor Subsitution List")
+                    {
+                        ApplicationArea = all;
+                        RunObject = page "Guarantor Subsitution List";
+                    }
+                    action("Loan Recovery Header List")
+                    {
+                        ApplicationArea = all;
+                        RunObject = page "Loan Recovery Header List";
+                    }
+                    action("Posted Loan Recovery Header")
+                    {
+                        ApplicationArea = all;
+                        RunObject = page "Posted Loan Recovery Header";
+                    }
+                    action("Loan Recovery Header(Modified)")
+                    {
+                        ApplicationArea = all;
+                        RunObject = page "Loan Recovery Header(Modified)";
+                    }
+                }
+                group("Member Activity")
+                {
+                    group("Member withdrawal")
+                    {
+                        group("Member withdrawal Notice")
+                        {
+                            action("Open withdrawal Notice")
+                            {
+                                ApplicationArea = all;
+                                RunObject = page "Open withdrawal Notice";
+                            }
+                            action("Pending Withdrawal Notice")
+                            {
+                                ApplicationArea = all;
+                                RunObject = page "Pending Withdrawal Notice";
+                            }
+                            action("Approved Withdrawal Notice")
+                            {
+                                ApplicationArea = all;
+                                RunObject = page "Approved Withdrawal Notice";
+                            }
+                            action("Rejected Withdrawal Notice")
+                            {
+                                ApplicationArea = all;
+                                RunObject = page "Rejected Withdrawal Notice";
+                            }
+                        }
+                        group("Member Securities")
+                        {
+                            action("Member Change List")
+                            {
+                                ApplicationArea = all;
+                                RunObject = page "Member Change List";
+                            }
+                            action("+ Member Change List")
+                            {
+                                ApplicationArea = all;
+                                RunObject = page "+ Member Change List";
+                            }
+
+                        }
+
+                        group("History")
+                        {
+                            action("Posted Membership Closure")
+                            {
+                                ApplicationArea = all;
+                                RunObject = page "Posted Membership Closure List";
+                            }
+                        }
+                    }
+                }
+                group("Loan CRB")
+                {
+                    group(Tasks)
+                    {
+                        action("CRB Data")
+                        {
+                            ApplicationArea = all;
+                            RunObject = page "CRB Data";
+                        }
+                    }
+                }
+                group("CRM Applications")
+                {
+                    action("CRM Application List")
+                    {
+                        ApplicationArea = all;
+                        RunObject = page "CRM Application List";
+                    }
+                }
+                group("Marketing")
+                {
+                    action("BDE Management List")
+                    {
+                        ApplicationArea = all;
+                        RunObject = page "BDE Management List";
+                    }
+                }
+                group("Divedent Process")
+                {
+                    action("Dividend Progression")
+                    {
+                        ApplicationArea = all;
+                        RunObject = page "Dividend Progression";
+                    }
+                    action("Dividend Posting Buffer")
+                    {
+                        ApplicationArea = all;
+                        RunObject = page "Dividend Posting Buffer";
+                    }
+                }
+                group("Member Closure")
+                {
+
+                    action("Open Closure List")
+                    {
+                        ApplicationArea = all;
+                        RunObject = page "Open Closure List";
+                    }
+                    action("Pending Closure List")
+                    {
+                        ApplicationArea = all;
+                        RunObject = page "Pending Closure List";
+                    }
+                    action("Approved Closure List")
+                    {
+                        ApplicationArea = all;
+                        RunObject = page "Approved Closure List";
+                    }
+                    action("Rejected Closure List")
+                    {
+                        ApplicationArea = all;
+                        RunObject = page "Rejected Closure List";
                     }
                 }
             }
-            group("CRM Applications")
-            {
-                action("CRM Application List")
-                {
-                    ApplicationArea = all;
-                    RunObject = page "CRM Application List";
-                }
-            }
-            group("Marketing")
-            {
-                action("BDE Management List")
-                {
-                    ApplicationArea = all;
-                    RunObject = page "BDE Management List";
-                }
-            }
-            group("Divedent Process")
-            {
-                action("Dividend Progression")
-                {
-                    ApplicationArea = all;
-                    RunObject = page "Dividend Progression";
-                }
-                action("Dividend Posting Buffer")
-                {
-                    ApplicationArea = all;
-                    RunObject = page "Dividend Posting Buffer";
-                }
-            }
-
-            group("Member Closure")
-            {
-
-                action("Open Closure List")
-                {
-                    ApplicationArea = all;
-                    RunObject = page "Open Closure List";
-                }
-                action("Pending Closure List")
-                {
-                    ApplicationArea = all;
-                    RunObject = page "Pending Closure List";
-                }
-                action("Approved Closure List")
-                {
-                    ApplicationArea = all;
-                    RunObject = page "Approved Closure List";
-                }
-                action("Rejected Closure List")
-                {
-                    ApplicationArea = all;
-                    RunObject = page "Rejected Closure List";
-                }
-            }
+        }
+        area(Embedding)
+        {
         }
         area(Reporting)
         {

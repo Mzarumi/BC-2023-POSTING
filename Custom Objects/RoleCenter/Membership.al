@@ -689,6 +689,17 @@ page 52186900 Membership
         }
         area(creation)
         {
+            action("General Journal")
+            {
+                ApplicationArea = Basic, Suite;
+                Caption = 'General Journal';
+                Image = NewSalesQuote;
+                // Promoted = false;
+                //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
+                //PromotedCategory = Process;
+                RunObject = Page "General Journal";
+                ToolTip = 'General Journal.';
+            }
             action("Sales &Quote")
             {
                 ApplicationArea = Basic, Suite;

@@ -255,7 +255,7 @@ codeunit 52185510 "Gen. Jnl.-Post Line Ext"
                     PostICPartner(GenJnlLine);
                 "Account Type"::Credit:
                     PostICPartner(GenJnlLine);
-                //msangi
+            //msangi
             end;
 
         OnAfterPostGenJnlLine(GenJnlLine, Balancing);
@@ -1397,7 +1397,7 @@ codeunit 52185510 "Gen. Jnl.-Post Line Ext"
     end;
 
     //msangi
-    local procedure PostSavings(var GenJnlLine: Record "Gen. Journal Line";Balancing: Boolean)
+    procedure PostSavings(var GenJnlLine: Record "Gen. Journal Line"; Balancing: Boolean)
     var
         LineFeeNoteOnReportHist: Record "Line Fee Note on Report Hist.";
         Cust: Record "Savings Accounts";
@@ -1411,48 +1411,48 @@ codeunit 52185510 "Gen. Jnl.-Post Line Ext"
         ActiveSession: Record "Active Session";
     begin
         Cust.Get(GenJnlLine."Account No.");
-        Cust.CheckBlockedCustOnJnls(Cust,GenJnlLine."Document Type",true);
-    
+        Cust.CheckBlockedCustOnJnls(Cust, GenJnlLine."Document Type", true);
+
         if GenJnlLine."Posting Group" = '' then begin
-        Cust.TestField("Customer Posting Group");
-        GenJnlLine."Posting Group" := Cust."Customer Posting Group";
+            Cust.TestField("Customer Posting Group");
+            GenJnlLine."Posting Group" := Cust."Customer Posting Group";
         end;
         CustPostingGr.Get(GenJnlLine."Posting Group");
         ReceivablesAccount := CustPostingGr.GetReceivablesAccount;
-        
+
         //DtldCustLedgEntry.LOCKTABLE;
         CustLedgEntry.LockTable;
-    
+
         //MESSAGE('%1 %2',ReceivablesAccount, "Posting Group");
-    
-        InitSavingsLedgEntry(GenJnlLine,CustLedgEntry);
-        
-        CustLedgEntry."Customer Posting Group":=GenJnlLine."Posting Group";
-        CustLedgEntry."Member No.":=Cust."Member No.";
+        InitNextEntryNo();
+        InitSavingsLedgEntry(GenJnlLine, CustLedgEntry);
+
+        CustLedgEntry."Customer Posting Group" := GenJnlLine."Posting Group";
+        CustLedgEntry."Member No." := Cust."Member No.";
         //CustLedgEntry."Member Name":=
         CustLedgEntry."Currency Code." := Cust."Currency Code";
         if Cust."Currency Code" <> '' then
-        CustLedgEntry.Amount := GenJnlLine.Amount
+            CustLedgEntry.Amount := GenJnlLine.Amount
         else
-        CustLedgEntry.Amount := GenJnlLine."Amount (LCY)";
+            CustLedgEntry.Amount := GenJnlLine."Amount (LCY)";
         CustLedgEntry."Amount (LCY)" := GenJnlLine."Amount (LCY)";
         CustLedgEntry.Open := GenJnlLine.Amount <> 0;
         CustLedgEntry."Remaining Amount" := CustLedgEntry.Amount;
         CustLedgEntry.Positive := GenJnlLine.Amount > 0;
         //Time and Machine Name-- Francis
-        CustLedgEntry."Creation Time":=Time;
-        CustLedgEntry."Creation Date":=Today;
-        ActiveSession.SetRange("User ID",UserId);
-        ActiveSession.SetRange("Client Type",ActiveSession."client type"::"Windows Client");
+        CustLedgEntry."Creation Time" := Time;
+        CustLedgEntry."Creation Date" := Today;
+        ActiveSession.SetRange("User ID", UserId);
+        ActiveSession.SetRange("Client Type", ActiveSession."client type"::"Windows Client");
         if ActiveSession.Find('-') then
-        CustLedgEntry."PC Posting Name":=ActiveSession."Client Computer Name";
+            CustLedgEntry."PC Posting Name" := ActiveSession."Client Computer Name";
         //
         CustLedgEntry.UpdateDebitCredit(GenJnlLine.Correction);
         CustLedgEntry.Insert(true);
         CreateGLEntryBalAcc(
-        GenJnlLine,ReceivablesAccount,GenJnlLine."Amount (LCY)",GenJnlLine."Source Currency Amount",
-        GenJnlLine."Bal. Account Type",GenJnlLine."Bal. Account No.");
-        DeferralPosting(GenJnlLine."Deferral Code",GenJnlLine."Source Code",ReceivablesAccount,GenJnlLine,Balancing);
+        GenJnlLine, ReceivablesAccount, GenJnlLine."Amount (LCY)", GenJnlLine."Source Currency Amount",
+        GenJnlLine."Bal. Account Type", GenJnlLine."Bal. Account No.");
+        DeferralPosting(GenJnlLine."Deferral Code", GenJnlLine."Source Code", ReceivablesAccount, GenJnlLine, Balancing);
         OnMoveGenJournalLine(GenJnlLine, CustLedgEntry.RecordId);
 
     end;
@@ -1472,13 +1472,13 @@ codeunit 52185510 "Gen. Jnl.-Post Line Ext"
     //     begin
     //       Cust.Get(GenJnlLine."Account No.");
     //       Cust.CheckBlockedCustOnJnls(Cust,GenJnlLine."Document Type",true);
-        
+
     //       if GenJnlLine."Posting Group" = '' then begin
     //         Cust.TestField("Customer Posting Group");
     //         GenJnlLine."Posting Group" := Cust."Customer Posting Group";
     //       end;
     //       CustPostingGr.Get(GenJnlLine."Posting Group");
-        
+
     //     //Get proper Account
     //       //ReceivablesAccount := CustPostingGr.GetReceivablesAccount;
     //       //MESSAGE('Loan Type %1 Trans Type %2 Loan No %3',LoanApp."Loan Product Type",GenJnlLine."Transaction Type",GenJnlLine."Loan No");
@@ -1487,16 +1487,16 @@ codeunit 52185510 "Gen. Jnl.-Post Line Ext"
     //       if LoanApp.Find('-') then
     //        ReceivablesAccount :=LoanTypes.GetReceivablesAccount(LoanApp."Loan Product Type",GenJnlLine."Transaction Type");
     //       LoanApp.CalcFields("Loans Category-SASRA");
-        
+
     //       if ReceivablesAccount='' then
     //       Error('Transaction Type blocked for %1.',GenJnlLine."Account No.");
-        
-        
+
+
     //       //DtldCustLedgEntry.LOCKTABLE;
     //       CustLedgEntry.LockTable;
-        
+
     //       InitCreditLedgEntry(GenJnlLine,CustLedgEntry);
-        
+
     //       CustLedgEntry."Transaction Type":="Transaction Type";
     //       CustLedgEntry."Loan No":="Loan No";
     //       CustLedgEntry."SASRA Loan Status":=LoanApp."Loans Category-SASRA";
@@ -1519,7 +1519,7 @@ codeunit 52185510 "Gen. Jnl.-Post Line Ext"
     //         GenJnlLine."Bal. Account Type",GenJnlLine."Bal. Account No.");
     //       DeferralPosting(GenJnlLine."Deferral Code",GenJnlLine."Source Code",ReceivablesAccount,GenJnlLine,Balancing);
     //       OnMoveGenJournalLine(CustLedgEntry.RecordId);
-        
+
     //     end;
     //       /*
     //       TempDtldCVLedgEntryBuf.DELETEALL;
@@ -1530,42 +1530,42 @@ codeunit 52185510 "Gen. Jnl.-Post Line Ext"
     //       TempDtldCVLedgEntryBuf.InsertDtldCVLedgEntry(TempDtldCVLedgEntryBuf,CVLedgEntryBuf,TRUE);
     //       CVLedgEntryBuf.Open := CVLedgEntryBuf."Remaining Amount" <> 0;
     //       CVLedgEntryBuf.Positive := CVLedgEntryBuf."Remaining Amount" > 0;
-        
+
     //       CalcPmtDiscPossible(GenJnlLine,CVLedgEntryBuf);
-        
+
     //       IF "Currency Code" <> '' THEN BEGIN
     //         TESTFIELD("Currency Factor");
     //         CVLedgEntryBuf."Original Currency Factor" := "Currency Factor"
     //       END ELSE
     //         CVLedgEntryBuf."Original Currency Factor" := 1;
     //       CVLedgEntryBuf."Adjusted Currency Factor" := CVLedgEntryBuf."Original Currency Factor";
-        
+
     //       // Check the document no.
     //       IF "Recurring Method" = 0 THEN
     //         IF IsNotPayment("Document Type") THEN BEGIN
     //           GenJnlCheckLine.CheckSalesDocNoIsNotUsed("Document Type","Document No.");
     //           CheckSalesExtDocNo(GenJnlLine);
     //         END;
-        
+
     //       // Post application
     //       //ApplyCustLedgEntry(CVLedgEntryBuf,TempDtldCVLedgEntryBuf,GenJnlLine,Cust);---Todo
-        
+
     //       // Post customer entry
     //       CVLedgEntryBuf.CopyToCreditLedgEntry(CustLedgEntry);
     //       CustLedgEntry."Amount to Apply" := 0;
     //       CustLedgEntry."Applies-to Doc. No." := '';
     //       CustLedgEntry.INSERT(TRUE);
-        
+
     //       // Post detailed customer entries
     //       DtldLedgEntryInserted := PostDtldCustLedgEntries(GenJnlLine,TempDtldCVLedgEntryBuf,CustPostingGr,TRUE);
-        
+
     //       // Post Reminder Terms - Note About Line Fee on Report
     //       ///LineFeeNoteOnReportHist.Save(CustLedgEntry);
-        
+
     //       IF DtldLedgEntryInserted THEN
     //         IF IsTempGLEntryBufEmpty THEN
     //           DtldCustLedgEntry.SetZeroTransNo(NextTransactionNo);
-        
+
     //       UpdateDOPaymentTransactEntry(GenJnlLine,CustLedgEntry."Entry No.");
     //       DeferralPosting("Deferral Code","Source Code",ReceivablesAccount,GenJnlLine,Balancing);
     //       OnMoveGenJournalLine(CustLedgEntry.RECORDID);
@@ -1574,8 +1574,9 @@ codeunit 52185510 "Gen. Jnl.-Post Line Ext"
 
     // end;
 
-    local procedure InitSavingsLedgEntry(GenJnlLine: Record "Gen. Journal Line";var CustLedgEntry: Record "Savings Ledger Entry")
+    local procedure InitSavingsLedgEntry(GenJnlLine: Record "Gen. Journal Line"; var CustLedgEntry: Record "Savings Ledger Entry")
     begin
+
         CustLedgEntry.Init;
         CustLedgEntry.CopyFromGenJnlLine(GenJnlLine);
         CustLedgEntry."Entry No." := NextEntryNo;
@@ -2610,13 +2611,13 @@ codeunit 52185510 "Gen. Jnl.-Post Line Ext"
             DtldCVLedgEntryBuf."Entry Type"::"Payment Discount (VAT Excl.)":
                 DtldCVLedgEntryBuf."Entry Type" :=
                   DtldCVLedgEntryBuf."Entry Type"::"Payment Discount (VAT Adjustment)";
-        DtldCVLedgEntryBuf."Entry Type"::"Payment Discount Tolerance (VAT Excl.)":
+            DtldCVLedgEntryBuf."Entry Type"::"Payment Discount Tolerance (VAT Excl.)":
                 DtldCVLedgEntryBuf."Entry Type" :=
                   DtldCVLedgEntryBuf."Entry Type"::"Payment Discount Tolerance (VAT Adjustment)";
-        DtldCVLedgEntryBuf."Entry Type"::"Payment Tolerance (VAT Excl.)":
+            DtldCVLedgEntryBuf."Entry Type"::"Payment Tolerance (VAT Excl.)":
                 DtldCVLedgEntryBuf."Entry Type" :=
                   DtldCVLedgEntryBuf."Entry Type"::"Payment Tolerance (VAT Adjustment)";
-    end;
+        end;
         DtldCVLedgEntryBuf."Posting Date" := GenJnlLine."Posting Date";
         DtldCVLedgEntryBuf."Document Type" := GenJnlLine."Document Type";
         DtldCVLedgEntryBuf."Document No." := GenJnlLine."Document No.";
@@ -3373,9 +3374,9 @@ codeunit 52185510 "Gen. Jnl.-Post Line Ext"
 
     procedure PostDtldCustLedgEntries(GenJnlLine: Record "Gen. Journal Line"; var DtldCVLedgEntryBuf: Record "Detailed CV Ledg. Entry Buffer"; CustPostingGr: Record "Customer Posting Group"; LedgEntryInserted: Boolean) DtldLedgEntryInserted: Boolean
     var
-        #if not CLEAN19
+#if not CLEAN19
         TempInvPostBuffer: Record "Invoice Post. Buffer" temporary;
-        #endif
+#endif
         TempDimPostingBuffer: Record "Dimension Posting Buffer" temporary;
         DtldCustLedgEntry: Record "Detailed Cust. Ledg. Entry";
         AdjAmount: array[4] of Decimal;
@@ -3416,13 +3417,13 @@ codeunit 52185510 "Gen. Jnl.-Post Line Ext"
         end;
 
         IsHandled := false;
-        #if not CLEAN19
+#if not CLEAN19
         CopyDimPostBufToInvPostBuf(TempDimPostingBuffer, TempInvPostBuffer);
         OnPostDtldCustLedgEntriesOnBeforeCreateGLEntriesForTotalAmounts(
             CustPostingGr, DtldCVLedgEntryBuf,
             GenJnlLine, TempInvPostBuffer, AdjAmount, SaveEntryNo, GetCustomerReceivablesAccount(GenJnlLine, CustPostingGr), LedgEntryInserted, AddCurrencyCode, IsHandled);
         CopyInvPostBufToDimPostBuf(TempInvPostBuffer, TempDimPostingBuffer);
-        #endif
+#endif
         OnPostDtldCustLedgEntriesOnBeforeCreateGLEntriesForTotalAmountsV19(
             CustPostingGr, DtldCVLedgEntryBuf,
             GenJnlLine, TempDimPostingBuffer, AdjAmount, SaveEntryNo, GetCustomerReceivablesAccount(GenJnlLine, CustPostingGr), LedgEntryInserted, AddCurrencyCode, IsHandled);
@@ -4814,9 +4815,9 @@ codeunit 52185510 "Gen. Jnl.-Post Line Ext"
         TempVATEntry2: Record "VAT Entry" temporary;
         CurrencyLCY: Record Currency;
         TempDimPostingBuffer: Record "Dimension Posting Buffer" temporary;
-        #if not CLEAN19
+#if not CLEAN19
         TempInvoicePostBuffer: Record "Invoice Post. Buffer" temporary;
-        #endif
+#endif
         AdjAmount: array[4] of Decimal;
         NextDtldLedgEntryNo: Integer;
         UnapplyVATEntries: Boolean;
@@ -4940,11 +4941,11 @@ codeunit 52185510 "Gen. Jnl.-Post Line Ext"
         until DtldCustLedgEntry2.Next() = 0;
 
         IsHandled := false;
-        #if not CLEAN19
+#if not CLEAN19
         CopyDimPostBufToInvPostBuf(TempDimPostingBuffer, TempInvoicePostBuffer);
         OnBeforeCreateGLEntriesForTotalAmountsUnapply(DtldCustLedgEntry, CustPostingGr, GenJnlLine, TempInvoicePostBuffer, IsHandled);
         CopyInvPostBufToDimPostBuf(TempInvoicePostBuffer, TempDimPostingBuffer);
-        #endif
+#endif
         OnBeforeCreateGLEntriesForTotalAmountsUnapplyV19(DtldCustLedgEntry, CustPostingGr, GenJnlLine, TempDimPostingBuffer, IsHandled);
         if not IsHandled then
             CreateGLEntriesForTotalAmountsUnapply(GenJnlLine, TempDimPostingBuffer, GetCustomerReceivablesAccount(GenJnlLine, CustPostingGr));
@@ -4971,9 +4972,9 @@ codeunit 52185510 "Gen. Jnl.-Post Line Ext"
         TempVATEntry2: Record "VAT Entry" temporary;
         CurrencyLCY: Record Currency;
         TempDimPostingBuffer: Record "Dimension Posting Buffer" temporary;
-        #if not CLEAN19
+#if not CLEAN19
         TempInvPostBuffer: Record "Invoice Post. Buffer" temporary;
-        #endif
+#endif
         AdjAmount: array[4] of Decimal;
         NextDtldLedgEntryNo: Integer;
         UnapplyVATEntries: Boolean;
@@ -5096,11 +5097,11 @@ codeunit 52185510 "Gen. Jnl.-Post Line Ext"
         until DtldVendLedgEntry2.Next() = 0;
 
         IsHandled := false;
-        #if not CLEAN19
+#if not CLEAN19
         CopyDimPostBufToInvPostBuf(TempDimPostingBuffer, TempInvPostBuffer);
         OnBeforeCreateGLEntriesForTotalAmountsUnapplyVendor(DtldVendLedgEntry, VendPostingGr, GenJnlLine, TempInvPostBuffer, IsHandled);
         CopyInvPostBufToDimPostBuf(TempInvPostBuffer, TempDimPostingBuffer);
-        #endif
+#endif
         OnBeforeCreateGLEntriesForTotalAmountsUnapplyVendorV19(DtldVendLedgEntry, VendPostingGr, GenJnlLine, TempDimPostingBuffer, IsHandled);
         if not IsHandled then
             CreateGLEntriesForTotalAmountsUnapply(GenJnlLine, TempDimPostingBuffer, GetVendorPayablesAccount(GenJnlLine, VendPostingGr));
@@ -6233,18 +6234,18 @@ codeunit 52185510 "Gen. Jnl.-Post Line Ext"
 
     procedure UpdateTotalAmounts(var TempDimPostingBuffer: Record "Dimension Posting Buffer" temporary; DimSetID: Integer; DtldCVLedgEntryBuf: Record "Detailed CV Ledg. Entry Buffer")
     var
-        #if not CLEAN19
+#if not CLEAN19
         TempInvoicePostBuffer: Record "Invoice Post. Buffer" temporary;
-        #endif
+#endif
         IsHandled: Boolean;
     begin
-            #if not CLEAN19
+#if not CLEAN19
         CopyDimPostBufToInvPostBuf(TempDimPostingBuffer, TempInvoicePostBuffer);
         OnBeforeUpdateTotalAmounts(
           TempInvoicePostBuffer, DimSetID, DtldCVLedgEntryBuf."Amount (LCY)", DtldCVLedgEntryBuf."Additional-Currency Amount", IsHandled,
           DtldCVLedgEntryBuf);
         CopyInvPostBufToDimPostBuf(TempInvoicePostBuffer, TempDimPostingBuffer);
-        #endif
+#endif
         OnBeforeUpdateTotalAmountsV19(
           TempDimPostingBuffer, DimSetID, DtldCVLedgEntryBuf."Amount (LCY)", DtldCVLedgEntryBuf."Additional-Currency Amount", IsHandled,
           DtldCVLedgEntryBuf);
@@ -6270,9 +6271,9 @@ codeunit 52185510 "Gen. Jnl.-Post Line Ext"
 
     local procedure CreateGLEntriesForTotalAmountsUnapply(GenJnlLine: Record "Gen. Journal Line"; var TempDimPostingBuffer: Record "Dimension Posting Buffer" temporary; GLAccNo: Code[20])
     var
-        #if not CLEAN19
+#if not CLEAN19
         TempInvoicePostBuffer: Record "Invoice Post. Buffer" temporary;
-        #endif
+#endif
         DimMgt: Codeunit DimensionManagement;
         IsHandled: Boolean;
     begin
@@ -6289,11 +6290,11 @@ codeunit 52185510 "Gen. Jnl.-Post Line Ext"
                        ("Amount (ACY)" <> 0) and (GLSetup."Additional Reporting Currency" <> '')
                     then begin
                         DimMgt.UpdateGenJnlLineDim(GenJnlLine, "Dimension Set ID");
-        #if not CLEAN19
+#if not CLEAN19
                         CopyDimPostBufToInvPostBuf(TempDimPostingBuffer, TempInvoicePostBuffer);
                         OnCreateGLEntriesForTotalAmountsUnapplyOnBeforeCreateGLEntry(GenJnlLine, TempInvoicePostBuffer, GLAccNo);
                         CopyInvPostBufToDimPostBuf(TempInvoicePostBuffer, TempDimPostingBuffer);
-        #endif
+#endif
                         OnCreateGLEntriesForTotalAmountsUnapplyOnBeforeCreateGLEntryV19(GenJnlLine, TempDimPostingBuffer, GLAccNo);
                         CreateGLEntry(GenJnlLine, GLAccNo, Amount, "Amount (ACY)", true);
                     end;
@@ -6303,19 +6304,19 @@ codeunit 52185510 "Gen. Jnl.-Post Line Ext"
 
     local procedure CreateGLEntriesForTotalAmounts(GenJnlLine: Record "Gen. Journal Line"; var TempDimPostingBuffer: Record "Dimension Posting Buffer" temporary; AdjAmountBuf: array[4] of Decimal; SavedEntryNo: Integer; GLAccNo: Code[20]; LedgEntryInserted: Boolean)
     var
-        #if not CLEAN19
+#if not CLEAN19
         TempInvoicePostBuffer: Record "Invoice Post. Buffer" temporary;
-        #endif
+#endif
         DimMgt: Codeunit DimensionManagement;
         GLEntryInserted: Boolean;
         IsHandled: Boolean;
     begin
         IsHandled := false;
-        #if not CLEAN19
+#if not CLEAN19
         CopyDimPostBufToInvPostBuf(TempDimPostingBuffer, TempInvoicePostBuffer);
         OnBeforeCreateGLEntriesForTotalAmounts(TempInvoicePostBuffer, GenJnlLine, GLAccNo, IsHandled);
         CopyInvPostBufToDimPostBuf(TempInvoicePostBuffer, TempDimPostingBuffer);
-        #endif
+#endif
         OnBeforeCreateGLEntriesForTotalAmountsV19(TempDimPostingBuffer, GenJnlLine, GLAccNo, IsHandled, AdjAmountBuf, SavedEntryNo, LedgEntryInserted);
         if IsHandled then
             exit;
@@ -6328,11 +6329,11 @@ codeunit 52185510 "Gen. Jnl.-Post Line Ext"
                 repeat
                     if (Amount <> 0) or ("Amount (ACY)" <> 0) and (AddCurrencyCode <> '') then begin
                         DimMgt.UpdateGenJnlLineDim(GenJnlLine, "Dimension Set ID");
-        #if not CLEAN19
+#if not CLEAN19
                         CopyDimPostBufToInvPostBuf(TempDimPostingBuffer, TempInvoicePostBuffer);
                         OnBeforeCreateGLEntryForTotalAmountsForInvPostBuf(GenJnlLine, TempInvoicePostBuffer, GLAccNo);
                         CopyInvPostBufToDimPostBuf(TempInvoicePostBuffer, TempDimPostingBuffer);
-        #endif
+#endif
                         OnBeforeCreateGLEntryForTotalAmountsForDimPostBuf(GenJnlLine, TempDimPostingBuffer, GLAccNo);
                         CreateGLEntryForTotalAmounts(GenJnlLine, Amount, "Amount (ACY)", AdjAmountBuf, SavedEntryNo, GLAccNo);
                         GLEntryInserted := true;
@@ -6344,7 +6345,7 @@ codeunit 52185510 "Gen. Jnl.-Post Line Ext"
             CreateGLEntryForTotalAmounts(GenJnlLine, 0, 0, AdjAmountBuf, SavedEntryNo, GLAccNo);
     end;
 
-        #if not CLEAN19
+#if not CLEAN19
     local procedure CopyDimPostBufToInvPostBuf(var TempDimPostingBuffer: Record "Dimension Posting Buffer" temporary; var TempInvoicePostBuffer: Record "Invoice Post. Buffer" temporary)
     var
         DimSetID: Integer;
@@ -6371,9 +6372,9 @@ codeunit 52185510 "Gen. Jnl.-Post Line Ext"
             TempInvoicePostBuffer.Find();
         end;
     end;
-        #endif
+#endif
 
-        #if not CLEAN19
+#if not CLEAN19
     local procedure CopyInvPostBufToDimPostBuf(var TempInvoicePostBuffer: Record "Invoice Post. Buffer" temporary; var TempDimPostingBuffer: Record "Dimension Posting Buffer" temporary)
     var
         DimSetID: Integer;
@@ -6400,7 +6401,7 @@ codeunit 52185510 "Gen. Jnl.-Post Line Ext"
             TempDimPostingBuffer.Find();
         end;
     end;
-        #endif
+#endif
 
     local procedure CreateGLEntryForTotalAmounts(GenJnlLine: Record "Gen. Journal Line"; Amount: Decimal; AmountACY: Decimal; AdjAmountBuf: array[4] of Decimal; var SavedEntryNo: Integer; GLAccNo: Code[20])
     var
@@ -6851,7 +6852,7 @@ codeunit 52185510 "Gen. Jnl.-Post Line Ext"
     local procedure OnBeforeStartPosting(var GenJournalLine: Record "Gen. Journal Line")
     begin
     end;
-    
+
     [IntegrationEvent(false, false)]
     local procedure OnBeforeCreateGLEntryBalAcc(var GenJnlLine: Record "Gen. Journal Line"; var AccNo: Code[20]; Amount: Decimal; AmountAddCurr: Decimal; var BalAccType: Enum "Gen. Journal Account Type"; var BalAccNo: Code[20])
     begin

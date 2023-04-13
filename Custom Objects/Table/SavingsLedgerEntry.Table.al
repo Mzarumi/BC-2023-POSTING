@@ -1,9 +1,9 @@
 table 52185732 "Savings Ledger Entry"
 {
     Caption = 'Savings Ledger Entry';
-    //DrillDownPageID = "Savings Ledger Entries";
-    //LookupPageID = "Savings Ledger Entries";
-
+    DrillDownPageID = "Savings Ledger Entries";
+    LookupPageID = "Savings Ledger Entries";
+    
     fields
     {
         field(1; "Entry No."; Integer)
