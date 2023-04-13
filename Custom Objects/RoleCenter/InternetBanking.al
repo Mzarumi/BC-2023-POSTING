@@ -104,126 +104,152 @@ page 52186805 "Internet Banking Role Center"
                 Caption = 'Mobile Banking';
                 Image = Journals;
                 ToolTip = 'Mobile Banking Tasks and Transactions.';
-                action("Mobile Transactions")
+
+                group("Transactions")
                 {
-                    ApplicationArea = Basic, Suite;
-                    Caption = 'Mobile Transactions';
-                    Image = Journal;
-                    RunObject = Page "Sky Mobile Transactions";
-                    ToolTip = '.';
+                    Caption = 'Transactions';
+                    ToolTip = 'Transactions.';
+                    action("Mobile Transactions")
+                    {
+                        ApplicationArea = Basic, Suite;
+                        Caption = 'Mobile Transactions';
+                        Image = Journal;
+                        RunObject = Page "Sky Mobile Transactions";
+                        ToolTip = '.';
+                    }
+                    action("Paybill Transactions")
+                    {
+                        ApplicationArea = Basic, Suite;
+                        Caption = 'Paybill Transactions';
+                        RunObject = Page "Sky Paybill Transactions";
+                        ToolTip = 'Paybill Transactions';
+                    }
                 }
-                action("Paybill Transactions")
+
+                group("Loans")
                 {
-                    ApplicationArea = Basic, Suite;
-                    Caption = 'Paybill Transactions';
-                    RunObject = Page "Sky Paybill Transactions";
-                    ToolTip = 'Paybill Transactions';
+                    Caption = 'Loans';
+                    ToolTip = 'Loans.';
+                    action("Loan Appraisals")
+                    {
+                        ApplicationArea = Basic, Suite;
+                        Caption = 'Mobile Loan Appraissals';
+                        Promoted = true;
+                        PromotedCategory = Process;
+                        RunObject = Page "Sky Mobile Loan Appraisal";
+                        ToolTip = 'Mobile Loan Apprassal.';
+                    }
+                    action("Mobile Loans")
+                    {
+                        ApplicationArea = Basic, Suite;
+                        Caption = 'Mobile Loans';
+                        Promoted = true;
+                        PromotedCategory = Process;
+                        RunObject = Page "Sky Mobile Loans";
+                        ToolTip = 'Sky Mobile Laons.';
+                    }
+                    action("BOSA Mobile Loans")
+                    {
+                        ApplicationArea = Suite;
+                        Caption = 'BOSA Mobile Loans';
+                        Image = Currency;
+                        Promoted = true;
+                        PromotedCategory = Process;
+                        RunObject = Page "Msacco Loan Application List";
+                        ToolTip = 'BOSA Mobile Loans.';
+                    }
+                    action(" Appraised Mobile Laon")
+                    {
+                        ApplicationArea = BasicHR;
+                        Caption = 'Mobile Loan Appraisal';
+                        Promoted = true;
+                        PromotedCategory = Process;
+                        RunObject = Page "Msacco Loan Appraised App List";
+                        ToolTip = 'Mobile Laon Appraisal List.';
+                    }
+                    action("Deffered Mobile Loan")
+                    {
+                        ApplicationArea = VAT;
+                        Caption = 'Deffered Mobile Loan';
+                        Promoted = true;
+                        PromotedCategory = Process;
+                        RunObject = Page "Msacco Loan Deferred App List";
+                        ToolTip = 'Deffered Mobile Loan List.';
+                    }
+                    action("Rejected Mobile Loan")
+                    {
+                        ApplicationArea = VAT;
+                        Caption = 'Rejected Mobile Loan';
+                        Promoted = true;
+                        PromotedCategory = Process;
+                        RunObject = Page "Msacco Loan Rejected App List";
+                        ToolTip = 'Rejected Mobile Loan List.';
+                    }
                 }
-                action("Loan Appraisals")
+                group("Communication")
                 {
-                    ApplicationArea = Basic, Suite;
-                    Caption = 'Mobile Loan Appraissals';
-                    Promoted = true;
-                    PromotedCategory = Process;
-                    RunObject = Page "Sky Mobile Loan Appraisal";
-                    ToolTip = 'Mobile Loan Apprassal.';
+                    Caption = 'Communication';
+                    ToolTip = 'Communication';
+                    action("Bulk SMS")
+                    {
+                        ApplicationArea = Basic, Suite;
+                        Caption = 'Bulk SMS';
+                        Promoted = true;
+                        PromotedCategory = Process;
+                        RunObject = Page "M-SACCO Bulk SMS Header List";
+                        ToolTip = 'Bulk SMS.';
+                    }
+                    action("SMS Messages")
+                    {
+                        ApplicationArea = Basic, Suite;
+                        Caption = 'SMS Messages';
+                        Promoted = true;
+                        PromotedCategory = Process;
+                        RunObject = Page "Sky SMS Messages";
+                        ToolTip = 'SMS Messages.';
+                    }
+                    action("Email Updates")
+                    {
+                        ApplicationArea = Suite;
+                        Caption = 'Email Updates';
+                        RunObject = Page "Sky Email Update";
+                        ToolTip = 'Email Updates.';
+                    }
+                    action("Posted Email Updates")
+                    {
+                        ApplicationArea = Suite;
+                        Caption = 'Posted Email Updates';
+                        RunObject = Page "Sky Email Update -Posted";
+                        ToolTip = 'Posted Email Updates.';
+                    }
                 }
-                action("Mobile Loans")
+                
+                group("Virtual Applications")
                 {
-                    ApplicationArea = Basic, Suite;
-                    Caption = 'Mobile Loans';
-                    Promoted = true;
-                    PromotedCategory = Process;
-                    RunObject = Page "Sky Mobile Loans";
-                    ToolTip = 'Sky Mobile Laons.';
+                    Caption = 'Virtual Applications';
+                    ToolTip = 'Virtual Applications';
+
+                    action("Virtual Member Applications")
+                    {
+                        ApplicationArea = Intercompany;
+                        Caption = 'Virtual Member Applications';
+                        Promoted = true;
+                        PromotedCategory = Process;
+                        RunObject = Page "USSD Member Application";
+                        ToolTip = 'Virtual Member Applications.';
+                    }
+                    action("Created V-Member Applications")
+                    {
+                        ApplicationArea = Intercompany;
+                        Caption = 'Created V-Member Applications';
+                        Promoted = true;
+                        PromotedCategory = Process;
+                        RunObject = Page "Created Sky Virtual Member";
+                        ToolTip = 'Created V-Member Applications.';
+                    }
+
                 }
-                action("BOSA Mobile Loans")
-                {
-                    ApplicationArea = Suite;
-                    Caption = 'BOSA Mobile Loans';
-                    Image = Currency;
-                    Promoted = true;
-                    PromotedCategory = Process;
-                    RunObject = Page "Msacco Loan Application List";
-                    ToolTip = 'BOSA Mobile Loans.';
-                }
-                action(" Appraised Mobile Laon")
-                {
-                    ApplicationArea = BasicHR;
-                    Caption = 'Mobile Loan Appraisal';
-                    Promoted = true;
-                    PromotedCategory = Process;
-                    RunObject = Page "Msacco Loan Appraised App List";
-                    ToolTip = 'Mobile Laon Appraisal List.';
-                }
-                action("Deffered Mobile Loan")
-                {
-                    ApplicationArea = VAT;
-                    Caption = 'Deffered Mobile Loan';
-                    Promoted = true;
-                    PromotedCategory = Process;
-                    RunObject = Page "Msacco Loan Deferred App List";
-                    ToolTip = 'Deffered Mobile Loan List.';
-                }
-                action("Rejected Mobile Loan")
-                {
-                    ApplicationArea = VAT;
-                    Caption = 'Rejected Mobile Loan';
-                    Promoted = true;
-                    PromotedCategory = Process;
-                    RunObject = Page "Msacco Loan Rejected App List";
-                    ToolTip = 'Rejected Mobile Loan List.';
-                }
-                action("Bulk SMS")
-                {
-                    ApplicationArea = Basic, Suite;
-                    Caption = 'Bulk SMS';
-                    Promoted = true;
-                    PromotedCategory = Process;
-                    RunObject = Page "M-SACCO Bulk SMS Header List";
-                    ToolTip = 'Bulk SMS.';
-                }
-                action("SMS Messages")
-                {
-                    ApplicationArea = Basic, Suite;
-                    Caption = 'SMS Messages';
-                    Promoted = true;
-                    PromotedCategory = Process;
-                    RunObject = Page "Sky SMS Messages";
-                    ToolTip = 'SMS Messages.';
-                }
-                action("Email Updates")
-                {
-                    ApplicationArea = Suite;
-                    Caption = 'Email Updates';
-                    RunObject = Page "Sky Email Update";
-                    ToolTip = 'Email Updates.';
-                }
-                action("Posted Email Updates")
-                {
-                    ApplicationArea = Suite;
-                    Caption = 'Posted Email Updates';
-                    RunObject = Page "Sky Email Update -Posted";
-                    ToolTip = 'Posted Email Updates.';
-                }
-                action("Virtual Member Applications")
-                {
-                    ApplicationArea = Intercompany;
-                    Caption = 'Virtual Member Applications';
-                    Promoted = true;
-                    PromotedCategory = Process;
-                    RunObject = Page "USSD Member Application";
-                    ToolTip = 'Virtual Member Applications.';
-                }
-                action("Created V-Member Applications")
-                {
-                    ApplicationArea = Intercompany;
-                    Caption = 'Created V-Member Applications';
-                    Promoted = true;
-                    PromotedCategory = Process;
-                    RunObject = Page "Created Sky Virtual Member";
-                    ToolTip = 'Created V-Member Applications.';
-                }
+                
                 action("Business Accounts")
                 {
                     ApplicationArea = Intercompany;
@@ -233,62 +259,65 @@ page 52186805 "Internet Banking Role Center"
                     RunObject = Page "Sky Business Accounts";
                     ToolTip = 'Business Accounts.';
                 }
-                action("Mortgage Requisition List")
+                group("Mortgage Requisitions")
                 {
-                    ApplicationArea = Suite;
-                    Caption = 'Mortgage Requisition List';
-                    Image = Currency;
-                    RunObject = Page "Mortgage Requisition List";
-                    ToolTip = 'Mortgage Requisition List.';
-                    // ObsoleteState = Pending;
-                    // ObsoleteReason = 'Duplicated action use action(Currencies)';
-                    // ObsoleteTag = '19.0';
-                }
-                action("Non Member Mortgage List")
-                {
-                    ApplicationArea = BasicHR;
-                    Caption = 'Non Member Mortgage List';
-                    Visible = true;
-                    RunObject = Page "Non Member Mortgage List";
-                    ToolTip = 'Non Member Mortgage List.';
-                    // ObsoleteState = Pending;
-                    // ObsoleteReason = 'Duplicated action use action(Employees)';
-                    // ObsoleteTag = '19.0';
-                }
-                action("Actioned Mortgage")
-                {
+                    Caption = 'Mortgage Requisitions';
+                    ToolTip = 'Mortgage Requisitions';
+                    action("Mortgage Requisition List")
+                    {
+                        ApplicationArea = Suite;
+                        Caption = 'Mortgage Requisition List';
+                        Image = Currency;
+                        RunObject = Page "Mortgage Requisition List";
+                        ToolTip = 'Mortgage Requisition List.';
+                        // ObsoleteState = Pending;
+                        // ObsoleteReason = 'Duplicated action use action(Currencies)';
+                        // ObsoleteTag = '19.0';
+                    }
+                    action("Non Member Mortgage List")
+                    {
+                        ApplicationArea = BasicHR;
+                        Caption = 'Non Member Mortgage List';
+                        Visible = true;
+                        RunObject = Page "Non Member Mortgage List";
+                        ToolTip = 'Non Member Mortgage List.';
+                        // ObsoleteState = Pending;
+                        // ObsoleteReason = 'Duplicated action use action(Employees)';
+                        // ObsoleteTag = '19.0';
+                    }
+                    action("Actioned Mortgage")
+                    {
                     ApplicationArea = Basic, Suite;
                     Caption = 'Actioned Mortgage';
                     Image = AccountingPeriods;
                     RunObject = Page "Actioned Mortgage";
                     ToolTip = 'Actioned Mortgage.';
                 }
-                action("Insurance Requisition List")
-                {
-                    ApplicationArea = Basic, Suite;
-                    Caption = 'Insurance Requisition List';
-                    RunObject = Page "Insurance Requisition List";
-                    ToolTip = 'Insurance Requisition List';
                 }
-                #if not CLEAN19
-                action("Actioned Insurance List")
+                group("Insurance Requisitions")
                 {
-                    ApplicationArea = Basic, Suite;
-                    Caption = 'Actioned Insurance List';
-                    RunObject = Page "Insurance Actioned List";
-                    ToolTip = 'Actioned Insurance List.';
-                    // ObsoleteState = Pending;
-                    // ObsoleteReason = 'Duplicated action use action("G/L Account Categories")';
-                    // ObsoleteTag = '19.0';
+                    Caption = 'Insurance Requisition';
+                    ToolTip = 'Insurance Requisition';
+                    action("Insurance Requisition List")
+                    {
+                        ApplicationArea = Basic, Suite;
+                        Caption = 'Insurance Requisition List';
+                        RunObject = Page "Insurance Requisition List";
+                        ToolTip = 'Insurance Requisition List';
+                    }
+                    #if not CLEAN19
+                    action("Actioned Insurance List")
+                    {
+                        ApplicationArea = Basic, Suite;
+                        Caption = 'Actioned Insurance List';
+                        RunObject = Page "Insurance Actioned List";
+                        ToolTip = 'Actioned Insurance List.';
+                        // ObsoleteState = Pending;
+                        // ObsoleteReason = 'Duplicated action use action("G/L Account Categories")';
+                        // ObsoleteTag = '19.0';
+                    }
                 }
                 #endif
-                action("Bank Account Posting Groups")
-                {
-                    ApplicationArea = Basic, Suite;
-                    Caption = 'Bank Account Posting Groups';
-                    RunObject = Page "Bank Account Posting Groups";
-                    ToolTip = 'Set up posting groups, so that payments in and out of each bank account are posted to the specified general ledger account.';
-                }
             }
             group("Web Portal")
             {
@@ -321,34 +350,44 @@ page 52186805 "Internet Banking Role Center"
                     RunObject = Page "Sky Checkoff Advice";
                     ToolTip = 'Checkoff Advice List .';
                 }
-                action("Web Portal Member App")
+                group("Portal Member Applications")
                 {
-                    ApplicationArea = Basic, Suite;
-                    Caption = 'Web Portal Member App';
-                    RunObject = Page "Web Portal Member App";
-                    ToolTip = 'Web Portal Member App List.';
+                    Caption = 'Portal Member Applications';
+                    ToolTip = 'Portal Member Applications';
+                    action("Web Portal Member App")
+                    {
+                        ApplicationArea = Basic, Suite;
+                        Caption = 'Web Portal Member App';
+                        RunObject = Page "Web Portal Member App";
+                        ToolTip = 'Web Portal Member App List.';
+                    }
+                    action("Created Web Portal App")
+                    {
+                        ApplicationArea = Basic, Suite;
+                        Caption = 'Created Web Portal App';
+                        RunObject = Page "Created Web Portal App";
+                        ToolTip = 'Created Web Portal App List.';
+                    }
                 }
-                action("Created Web Portal App")
+                group("Portal Member Onboarding")
                 {
-                    ApplicationArea = Basic, Suite;
-                    Caption = 'Created Web Portal App';
-                    RunObject = Page "Created Web Portal App";
-                    ToolTip = 'Created Web Portal App List.';
-                }
-                action("Member Onboarding List")
-                {
-                    ApplicationArea = BasicEU;
-                    Caption = 'Member Onboarding List';
-                    Image = "Report";
-                    RunObject = Page "Member Onboarding List";
-                    ToolTip = 'Member Onboarding List.';
-                }
-                action("On-Boarded Members")
-                {
-                    ApplicationArea = Basic, Suite;
-                    Caption = 'On Boarded Members';
-                    RunObject = Page "On Boarded Members";
-                    ToolTip = 'On Boarded Members.';
+                    Caption = 'Portal Member Onboarding';
+                    ToolTip = 'Portal Member Onboarding';
+                    action("Member Onboarding List")
+                    {
+                        ApplicationArea = BasicEU;
+                        Caption = 'Member Onboarding List';
+                        Image = "Report";
+                        RunObject = Page "Member Onboarding List";
+                        ToolTip = 'Member Onboarding List.';
+                    }
+                    action("On-Boarded Members")
+                    {
+                        ApplicationArea = Basic, Suite;
+                        Caption = 'On Boarded Members';
+                        RunObject = Page "On Boarded Members";
+                        ToolTip = 'On Boarded Members.';
+                    }
                 }
             }
             group("Agency Banking")
